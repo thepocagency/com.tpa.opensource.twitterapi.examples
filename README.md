@@ -13,7 +13,7 @@ This project contains couple of generic classes to create new Twitter calls quic
 2. Clone the jTwitterAPI from this URL: [https://github.com/thepocagency/com.tpa.opensource.twitterapi](https://github.com/thepocagency/com.tpa.opensource.twitterapi)
 
     2.a. Change configuration properties in the file config.properties, 
-    you specially have to set the ```twitter.consumerKey``` and ```twitter.consumerSecret properties```
+    you specially have to set the ```twitter.consumerKey``` and ```twitter.consumerSecret``` properties
 
     2.b. Compile this project with Maven: ```mvn clean install```
 
