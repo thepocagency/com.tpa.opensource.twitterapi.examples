@@ -5,7 +5,7 @@ This is a simple example of a main class consuming Twitter API thanks to the pro
 Check the main class for more information:
 - Step 1. User has to log in the Twitter API
 
-- Step 2. It calls the Twitter streaming API (using class StreamingSearch.java)
+- Step 2. It calls the Twitter streaming API (using the class [StreamingSearch.java](https://github.com/thepocagency/com.tpa.opensource.twitterapi/blob/master/src/main/java/com/tpa/twitterapi/api/call/StreamingSearch.java))
 
 - Steps 3. + 4. 
     - It orders the messages grouped by user (users sorted chronologically, ascending) 
@@ -15,7 +15,7 @@ Check the main class for more information:
 
 If you follow the next compilation process, you will obtain a standalone JAR file.
 
-This project contains couple of generic classes to create new Twitter calls quickly and easily. There is also an example of how to use Twitter streaming calls.
+This project contains couple of generic classes to create new Twitter calls, quickly and easily. There is also an example of how to use Twitter streaming calls.
 
 ## How to use it / Example
 
@@ -27,11 +27,9 @@ This project contains couple of generic classes to create new Twitter calls quic
     you specially have to set the ```twitter.consumerKey``` and ```twitter.consumerSecret``` properties
 
 NB: if you want to have results in different log files, you can change the ```java.util.logging.everyLogInSameFile``` property in the config.properties
-
 NB: you can also see that we specially develop a light formatter to read Twitter messages more easily in the log file(s)
-
-
-    2.b. Compile this project with Maven: ```mvn clean install```
+    
+   2.b. Compile this project with Maven: ```mvn clean install```
 
 3. Clone this second project from: [https://github.com/thepocagency/com.tpa.opensource.twitterapi.examples](https://github.com/thepocagency/com.tpa.opensource.twitterapi.examples)
 
