@@ -84,7 +84,7 @@ Example of result:
 
 ## Credits
 
-We'd like to thank you [Picnic](https://www.picnic.nl/) for this nice assignment :)
+We'd like to thank [Picnic](https://www.picnic.nl/) for this nice assignment :)
 
 Developped by Alexandre Veremme @ [The POC Agency](https://www.the-poc-agency.com)
 
