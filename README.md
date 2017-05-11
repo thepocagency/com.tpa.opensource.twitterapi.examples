@@ -26,10 +26,11 @@ This project contains couple of generic classes to create new Twitter calls, qui
     2.a. Change configuration properties in the file config.properties, 
     you specially have to set the ```twitter.consumerKey``` and ```twitter.consumerSecret``` properties
 
+    2.b. Compile this project with Maven: ```mvn clean install```
+
 NB: if you want to have results in different log files, you can change the ```java.util.logging.everyLogInSameFile``` property in the config.properties
-NB: you can also see that we specially develop a light formatter to read Twitter messages more easily in the log file(s)
-    
-   2.b. Compile this project with Maven: ```mvn clean install```
+
+NB: you can also see that we specially develop a light formatter to read Twitter messages more easily in the log file(s)    
 
 3. Clone this second project from: [https://github.com/thepocagency/com.tpa.opensource.twitterapi.examples](https://github.com/thepocagency/com.tpa.opensource.twitterapi.examples)
 
