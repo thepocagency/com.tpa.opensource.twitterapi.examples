@@ -26,6 +26,8 @@ import java.util.logging.Logger;
 /**
  * This class is just used to order a list of statuses by author
  * 
+ * NB: we could try to generalize this class with a AbstractOutput to handle more generic methods
+ * 
  * @author Alexandre Veremme @ The POC Agency | alex [at] the-poc-agency.com
  */
 public class PrintOutput {

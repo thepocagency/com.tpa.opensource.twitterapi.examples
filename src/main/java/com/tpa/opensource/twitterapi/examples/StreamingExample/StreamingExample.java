@@ -17,14 +17,12 @@ package com.tpa.opensource.twitterapi.examples.StreamingExample;
 
 import com.tpa.twitterapi.tools.singleton.logger.LoggerSingleton;
 import com.tpa.twitterapi.tools.singleton.property.PropertySingleton;
-import com.tpa.twitterapi.tools.singleton.scanner.ScannerSingleton;
 import com.tpa.twitterapi.api.authentificator.TwitterAuthenticator;
 import com.tpa.twitterapi.api.call.StreamingSearch;
 import com.tpa.twitterapi.api.generic.bean.TwitterStatus;
 import com.tpa.twitterapi.api.generic.bean.TwitterStatuses;
 import com.tpa.twitterapi.exception.TwitterAuthenticationException;
 import com.tpa.twitterapi.exception.TwitterRequestException;
-import com.tpa.twitterapi.exception.WrongConversionException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,17 +30,14 @@ import java.util.logging.Logger;
 /**
  * This is just a small example to show you how to use our Twitter API
  *
- * 1. User has to log in the Twitter API
+ * Step 1. User has to log in the Twitter API
  *
- * 2.a. to set the delay of waiting time 2.b. the max number of retrieved posts
- * 2.c. the search you want
+ * Step 2. It calls the Twitter streaming API (using class StreamingSearch.java)
  *
- * 3. It calls the Twitter-API-streaming-search StreamingSearch.java
- *
- * 4. + 5. Order the messages grouped by user (users sorted chronologically,
- * ascending) - The messages per user are also sorted chronologically, ascending
- * - Print this information to the command line + in a log file (cf.
- * /log/twitter.log)
+ * Steps 3. + 4. 
+ * - It orders the messages grouped by user (users sorted chronologically, ascending) 
+ * - The messages per user are also sorted chronologically, ascending
+ * - Print this information to the command line + in a log file (cf. /log/twitter.log)
  *
  * @author Alexandre Veremme @ The POC Agency | alex [at] the-poc-agency.com
  */
@@ -59,47 +54,17 @@ public class StreamingExample {
             // 1. Authentification
             TwitterAuthenticator twitterAuthenticator = new TwitterAuthenticator();
 
-            // 2. Let's ask for parameters...
-            Integer delayInSeconds;
-            try {
+            // NB: if you want to ask user to specify parameter values, you could use: ScannerSingleton.getInstance().scanValue()
 
-                delayInSeconds = ScannerSingleton.getInstance().scanValue(Integer.class,
-                        PROPERTY_SINGLETON.getInteger("twitter.default.delayInSeconds"),
-                        "Please specify the number of waiting seconds: ");
+            // 2. Call the streaming Twitter API
+            List<TwitterStatus> statuses = new StreamingSearch(twitterAuthenticator, 30, 100)
+                    .addParameter("track", "bieber")
+                    .executeListRequest();
 
-            } catch (WrongConversionException ex) {
-                throw new com.tpa.twitterapi.exception.TwitterAuthenticationException("Unable to convert the delayInSeconds");
-            }
-
-            Integer sizeLimit;
-            try {
-
-                sizeLimit = ScannerSingleton.getInstance().scanValue(Integer.class,
-                        PROPERTY_SINGLETON.getInteger("twitter.default.sizeLimit"),
-                        "Please specify the max number of elements: ");
-
-            } catch (WrongConversionException ex) {
-                throw new com.tpa.twitterapi.exception.TwitterAuthenticationException("Unable to convert the sizeLimit");
-            }
-
-            String textSearch;
-            try {
-                textSearch = ScannerSingleton.getInstance().scanValue(String.class,
-                        PROPERTY_SINGLETON.getProperty("twitter.default.searchText"),
-                        "Please specify the search: ");
-            } catch (WrongConversionException ex) {
-                throw new com.tpa.twitterapi.exception.TwitterAuthenticationException("Unable to convert the sizeLimit");
-            }
-
-            // 3. Call the streaming Twitter API
-            List<TwitterStatus> statuses = new StreamingSearch(twitterAuthenticator, delayInSeconds, sizeLimit)
-                    .addParameter("track", textSearch) // Optionnal (if missing: uses default text search)
-                    .executeListRequest(); // Executes the request
-
-            // 4. Order everything
+            // 3. Order everything
             List<TwitterStatus> orderedStatuses = new TwitterStatuses(statuses).getOrderedStatuses();
 
-            // 5. Group by author and print the result
+            // 4. Group by author and print the result
             new PrintOutput(orderedStatuses);
 
         } catch (TwitterAuthenticationException | TwitterRequestException ex) {
