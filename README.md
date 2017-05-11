@@ -2,13 +2,15 @@
 
 This is a simple example of a main class consuming Twitter API thanks to the project jTwitterAPI: [https://github.com/thepocagency/com.tpa.opensource.twitterapi](https://github.com/thepocagency/com.tpa.opensource.twitterapi).
 
-Check the main class ofr more information:
-Step 1. User has to log in the Twitter API
-Step 2. It calls the Twitter streaming API (using class StreamingSearch.java)
-Steps 3. + 4. 
- - It orders the messages grouped by user (users sorted chronologically, ascending) 
- - The messages per user are also sorted chronologically, ascending
- - Print this information to the command line + in a log file (cf. /log/twitter.log)
+Check the main class for more information:
+- Step 1. User has to log in the Twitter API
+
+- Step 2. It calls the Twitter streaming API (using class StreamingSearch.java)
+
+- Steps 3. + 4. 
+    - It orders the messages grouped by user (users sorted chronologically, ascending) 
+    - The messages per user are also sorted chronologically, ascending
+    - Print this information to the command line + in a log file (cf. /log/twitter.log)
 
 
 If you follow the next compilation process, you will obtain a standalone JAR file.
@@ -42,7 +44,7 @@ NB: you can also see that we specially develop a light formatter to read Twitter
 
 ## Visible results
 
-We've created a very simple Formatter to print lighted log messages, so in log/twitter.log, you can find result:
+We've created a very simple formatter to print lighted log messages. So at the end of the execution, you can find results in the file log/twitter.log :
 
 Example of result: 
 
